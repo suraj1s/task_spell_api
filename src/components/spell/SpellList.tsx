@@ -1,22 +1,14 @@
-import React, { useEffect, useContext } from "react";
+import React, {  useContext } from "react";
 import { Link } from "react-router-dom";
 import { FavouritesContext } from "../../sotre/context/FavouritesContext";
 import { SpellContext } from "../../sotre/context/SpellContext";
-import { baseUrl } from "../../constants/api";
 
 const SpellList: React.FC = () => {
-  const { spells, setSpells } = useContext(SpellContext);
+  const { spells } = useContext(SpellContext);
   const { favourites, addToFavourites, removeFromFavourites } =
     useContext(FavouritesContext);
 
-  useEffect(() => {
-    const fetchSpells = async () => {
-      const response = await fetch(`${baseUrl}/spells`);
-      const data = await response.json();
-      setSpells(data.results);
-    };
-    fetchSpells();
-  }, [setSpells]);
+
 
   return (
     <div className="container mx-auto p-4">

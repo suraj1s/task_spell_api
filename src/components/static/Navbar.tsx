@@ -21,22 +21,22 @@ const Navbar = ({ children }: { children: React.ReactNode }) => {
       <div className="flex sticky top-2  items-center justify-center mx-auto py-2 px-10 gap-5 border border-slate-300 rounded-3xl  w-fit  bg-slate-900 backdrop-blur-md backdrop-brightness-90 ">
         {Array.isArray(navLinks) &&
           navLinks.map((item, index) => (
-            <div className="relative">
-            <NavLink
-              to={item.link}
-              key={index}
-              className={({ isActive }) =>
-                isActive
-                  ? "font-bold text-slate-50"
-                  : " font-medium text-slate-300"
-              }
-            >
-              {item.title}
-              {
-                item.title === "Favourites" &&
-              <p className="absolute top-4 -right-4 text-[12px] bg-red-500 text-slate-300 rounded-full size-4 flex items-center justify-center ">{favourites.length }</p>
-              }
-            </NavLink>
+            <div className="relative" key={index}>
+              <NavLink
+                to={item.link}
+                className={({ isActive }) =>
+                  isActive
+                    ? "font-bold text-slate-50"
+                    : " font-medium text-slate-300"
+                }
+              >
+                {item.title}
+                {item.title === "Favourites" && (
+                  <p className="absolute top-4 -right-4 text-[12px] bg-red-500 text-slate-300 rounded-full size-4 flex items-center justify-center ">
+                    {favourites.length}
+                  </p>
+                )}
+              </NavLink>
             </div>
           ))}
       </div>

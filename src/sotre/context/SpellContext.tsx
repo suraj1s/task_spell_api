@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect } from 'react';
 import { ISpellType } from '../../types';
+import { baseUrl } from '../../constants/api';
 
 interface SpellContextProps {
   spells: ISpellType[];
@@ -22,7 +23,7 @@ const SpellProvider = ({ children } : {children : React.ReactNode}) => {
   useEffect(() => {
     const fetchSpells = async () => {
       setIsLoading(true);
-      const response = await fetch('/api/spells');
+      const response = await fetch(`${baseUrl}/spells`);
       const data = await response.json();
       setSpells(data.results);
       setIsLoading(false);
