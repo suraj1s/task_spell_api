@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
-import { Spell } from "../../types/spell";
 import { baseUrl } from "../../constants/api";
 import { FavouritesContext } from "../../sotre/context/FavouritesContext";
+import { ISpellType } from "../../types";
 
 const SpellDetails: React.FC = () => {
   const { spellIndex } = useParams();
-  const [spell, setSpell] = useState<Spell | null>(null);
+  const [spell, setSpell] = useState<ISpellType | null>(null);
   const { favourites, addToFavourites, removeFromFavourites } =
     useContext(FavouritesContext);
 
@@ -22,7 +22,7 @@ const SpellDetails: React.FC = () => {
     }
   }, [spellIndex]);
 
-  const isFavourited = favourites.some((item) => item.index === spellIndex);
+  const isFavourited = favourites.some((item ) => item.index === spellIndex);
 
   const handleFavouriteToggle = () => {
     if (!spell) return;
@@ -78,8 +78,8 @@ const SpellDetails: React.FC = () => {
             </div>
           </div>
 
-            <div>
-          <div className="max-w-3xl border rounded-lg p-5 h-fit w-fit">
+          <div>
+            <div className="max-w-3xl border rounded-lg p-5 h-fit w-fit">
               <p>Description:</p>
               <ul>
                 {spell.desc &&
@@ -90,14 +90,14 @@ const SpellDetails: React.FC = () => {
                   ))}
               </ul>
             </div>
-          <button
-            className={`py-2 px-4 rounded text-sm font-bold my-8 ${
-              isFavourited ? "bg-blue-500 text-white" : "bg-gray-200"
-            }`}
-            onClick={handleFavouriteToggle}
-          >
-            {isFavourited ? "Remove from Favorites" : "Add to Favorites"}
-          </button>
+            <button
+              className={`py-2 px-4 rounded text-sm font-bold my-8 ${
+                isFavourited ? "bg-blue-500 text-white" : "bg-gray-200"
+              }`}
+              onClick={handleFavouriteToggle}
+            >
+              {isFavourited ? "Remove from Favorites" : "Add to Favorites"}
+            </button>
           </div>
         </div>
       ) : (
