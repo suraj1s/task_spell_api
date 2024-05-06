@@ -1,6 +1,4 @@
-// types.ts
-
-export interface Spell {
+export interface ISpellType {
     index: string;
     name: string;
     level: number;

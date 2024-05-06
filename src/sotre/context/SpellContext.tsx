@@ -1,9 +1,9 @@
 import React, { createContext, useState, useEffect } from 'react';
-import { Spell } from '../../types/spell';
+import { ISpellType } from '../../types';
 
 interface SpellContextProps {
-  spells: Spell[];
-  setSpells: (newSpells: Spell[]) => void;
+  spells: ISpellType[];
+  setSpells: (newSpells: ISpellType[]) => void;
   isLoading: boolean;
   setIsLoading: (loading: boolean) => void;
 }
@@ -16,7 +16,7 @@ const SpellContext = createContext<SpellContextProps>({
 });
 
 const SpellProvider = ({ children } : {children : React.ReactNode}) => {
-  const [spells, setSpells] = useState<Spell[]>([]);
+  const [spells, setSpells] = useState<ISpellType[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {

@@ -1,18 +1,18 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FavouritesContext } from "../../sotre/context/FavouritesContext";
-import { Spell } from "../../types/spell";
 import { SpellContext } from "../../sotre/context/SpellContext";
+import { ISpellType } from "../../types";
 
 const FavouritesSpell: React.FC = () => {
   const { spells } = useContext(SpellContext);
-  const [filteredSpell, setFilteredSpell] = useState<Spell[]>([]);
+  const [filteredSpell, setFilteredSpell] = useState<ISpellType[]>([]);
   const { favourites, addToFavourites, removeFromFavourites } =
     useContext(FavouritesContext);
 
   useEffect(() => {
     console.log(favourites, spells);
-    const temp = spells.filter((spell: Spell) =>
+    const temp = spells.filter((spell: ISpellType) =>
       favourites.some((item) => item.index === spell.index)
     );
     setFilteredSpell(temp);
@@ -20,7 +20,7 @@ const FavouritesSpell: React.FC = () => {
 
   return (
     <div className="container mx-auto p-4">
-       <h2 className="text-3xl font-semibold py-4">Favourites</h2>
+      <h2 className="text-3xl font-semibold py-4">Favourites</h2>
       {filteredSpell.length > 0 ? (
         <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {" "}
