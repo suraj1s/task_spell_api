@@ -20,19 +20,14 @@ const SpellList: React.FC = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <Link to={"/favourites"}>
-        <button
-          className={`mt-2 py-1 px-2 rounded text-sm bg-blue-500 text-white`}
-        >
-          Favroits
-        </button>
-      </Link>
+             <h2 className="text-3xl font-semibold py-4">Spell List</h2>
+
       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         {spells.map((spell) => (
           <li
             key={spell.index}
-            className={`p-4 rounded-md shadow-md hover:bg-gray-100 ${
-                favourites.some((item) => item.index === spell.index) ? "bg-blue-100" : ""
+            className={`p-4  shadow-md hover:bg-slate-700  border rounded-lg ${
+                favourites.some((item) => item.index === spell.index) ? "bg-slate-800" : ""
             }`}
           >
             <Link
@@ -41,12 +36,12 @@ const SpellList: React.FC = () => {
             >
               {spell.name}
             </Link>
-            <p className="text-gray-600">Level: {spell.level}</p>
+            <p className="text-slate-400">Level: {spell.level}</p>
             <button
               className={`mt-2 py-1 px-2 rounded text-sm ${
                 favourites.some((item) => item.index === spell.index)
-                  ? "bg-blue-500 text-white"
-                  : "bg-gray-200"
+                  ? "bg-blue-500 text-slate-200"
+                  : "bg-slate-600"
               }`}
               onClick={() =>
                 favourites.some((item) => item.index === spell.index)

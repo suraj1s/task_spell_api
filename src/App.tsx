@@ -5,19 +5,32 @@ import SpellList from "./components/spell/SpellList";
 import SpellDetails from "./components/spell/SpellDetails";
 import { SpellProvider } from "./sotre/context/SpellContext";
 import FavouritesSpell from "./components/spell/FavouritesSpell";
+import Navbar from "./components/static/Navbar";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <SpellList />,
+    element: (
+      <Navbar>
+        <SpellList />
+      </Navbar>
+    ),
   },
   {
     path: "/spells/:spellIndex",
-    element: <SpellDetails />,
+    element: (
+      <Navbar>
+        <SpellDetails />
+      </Navbar>
+    ),
   },
   {
     path: "/favourites",
-    element: <FavouritesSpell />,
+    element: (
+      <Navbar>
+        <FavouritesSpell />
+      </Navbar>
+    ),
   },
 ]);
 
