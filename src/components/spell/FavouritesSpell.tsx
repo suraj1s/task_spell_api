@@ -11,7 +11,7 @@ const FavouritesSpell: React.FC = () => {
     useContext(FavouritesContext);
 
   useEffect(() => {
-    console.log(favourites, spells);
+    // console.log(favourites, spells);
     const temp = spells.filter((spell: ISpellType) =>
       favourites.some((item) => item.index === spell.index)
     );
